@@ -33,7 +33,6 @@ export const TestButton = (props: TestButtonProps) => {
             `}
         >
             Test
-        {/*  todo  +svg*/}
         </button>
     );
 };

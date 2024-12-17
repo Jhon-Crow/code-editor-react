@@ -9,7 +9,6 @@ import {TestButton} from "@/features/TestButton";
 import {ApiResponseText} from "@/entities/ApiResponseText";
 import {ApiResponseObjInterface} from "@/entities/ApiResponseText/type/ApiResponseObjInterface.ts";
 
-
 type TLanguage = 'go' | 'python';
 type Ttheme = 'dark' | 'light';
 
@@ -57,7 +56,7 @@ export const Main = (props: MainProps) => {
     const [apiRes, setApiRes] = useState<ApiResponseObjInterface>();
     return (
         <main
-            className={`${theme === 'dark' ? 'bg-slate-800' : null} 
+            className={`${theme === 'dark' ? 'bg-slate-800' : 'bg-gray-50'} 
             flex flex-col min-h-screen justify-start gap-1.5
             p-2`}
         >
@@ -71,7 +70,7 @@ export const Main = (props: MainProps) => {
                 />
 
             <CodeSpace
-                maxHeight='60vh'
+                maxHeight='55vh'
                 value={code}
                 setValue={setCode}
                 language={languagesMap[selectedLang]}

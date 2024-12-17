@@ -13,8 +13,6 @@ export const ApiResponseText = (props: ApiResponseProps) => {
 
     return res && (
         <div className={`p-4 rounded-md ${bgClass} ${shadowClass} shadow-lg`}>
-            {/*  todo  +svg*/}
-
             <h1 className={`text-lg font-bold ${textClass}`}>{res.status}</h1>
             <p className={textClass}>{res.status === 'success' ? res.output : res.error}</p>
         </div>
