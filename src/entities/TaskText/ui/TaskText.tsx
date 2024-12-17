@@ -14,7 +14,7 @@ export const TaskText = (props: TaskTextProps) => {
     } = props;
     return (
         <div
-            className={`p-6 bg-${theme === 'dark' ? 'slate-900' : 'white'} rounded-lg shadow-lg`}
+            className={`p-6 bg-${theme === 'dark' ? 'slate-900' : 'white'} rounded-md shadow-lg`}
         >
             {header && <h1
                 className={`text-2xl font-bold text-gray-${theme === 'dark' ? 300 : 800} mb-4`}

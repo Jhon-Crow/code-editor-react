@@ -1,8 +1,4 @@
-
-
-// type TOption<T extends string> = {value: T, title: string}
 interface SelectProps<T extends string>{
-    // options: TOption<T>[];
     theme?: 'dark' | 'light',
     options: T[];
     value: T;
@@ -23,7 +19,7 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
 
     return (
         <select
-            className={`text-center p-2 bg-${theme === 'dark' ? 'slate-900' : 'white'} rounded-lg shadow-lg text-gray-${theme === 'dark' ? 300 : 800}`}
+            className={`text-center p-2 bg-${theme === 'dark' ? 'slate-900' : 'white'} rounded-md shadow-lg text-gray-${theme === 'dark' ? 300 : 800}`}
             value={value}
             onChange={handleChange}
         >
