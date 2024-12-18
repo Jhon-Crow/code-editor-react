@@ -1,5 +1,5 @@
 import {PostRequest} from "@/features/TestButton/api/TestApi.ts";
-import {useCallback, useState} from "react";
+import {memo, useCallback, useState} from "react";
 import {ApiResponseObjInterface} from "@/entities/ApiResponseText/type/ApiResponseObjInterface.ts";
 
 interface TestButtonProps {
@@ -9,7 +9,7 @@ interface TestButtonProps {
     className?: string;
 }
 
-export const TestButton = (props: TestButtonProps) => {
+export const TestButton = memo((props: TestButtonProps) => {
     const [disabled, setDisabled] = useState(false);
     const {code, language, setApiRes, className} = props;
 
@@ -18,7 +18,7 @@ export const TestButton = (props: TestButtonProps) => {
         const res = await PostRequest({language, code});
         setApiRes(res);
         setDisabled(false);
-    }, [code]);
+    }, [code, language, setApiRes]);
 
     return (
         <button
@@ -35,4 +35,10 @@ export const TestButton = (props: TestButtonProps) => {
             Test
         </button>
     );
-};
+},  (prevProps, nextProps) => {
+    return (
+        prevProps.code === nextProps.code &&
+        prevProps.language === nextProps.language &&
+        prevProps.className === nextProps.className
+    );
+});

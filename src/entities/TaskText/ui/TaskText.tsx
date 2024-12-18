@@ -1,10 +1,11 @@
+import {memo} from "react";
 
 interface TaskTextProps {
     header?: string;
     description?: string;
 }
 
-export const TaskText = (props: TaskTextProps) => {
+export const TaskText = memo((props: TaskTextProps) => {
     const {
         header,
         description,
@@ -21,4 +22,4 @@ export const TaskText = (props: TaskTextProps) => {
             >{description}</p>}
         </div>
     );
-};
+});

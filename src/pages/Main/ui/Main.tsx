@@ -1,5 +1,5 @@
 import {go} from '@codemirror/lang-go';
-import {useState} from "react";
+import {useMemo, useState} from "react";
 import {python} from "@codemirror/lang-python";
 import {Select} from "@/shared/Select";
 import {CodeSpace} from "@/entities/CodeSpace";
@@ -17,13 +17,14 @@ export const Main = () => {
     const [code, setCode] = useState(
         codeEditorInitialState
     );
-    const langNamesArr: TLanguage[] = ['go', 'python'];
+    const [langNamesArr, _] = useState<TLanguage[]>(['go', 'python']);
     const languagesMap: Record<TLanguage, () => Extension> = {
         'go': go,
         'python': python
     };
-    const [selectedLang, setSelectedLang] = useState(langNamesArr[0]);
+    const [selectedLang, setSelectedLang] = useState<TLanguage>(langNamesArr[0]);
     const [apiRes, setApiRes] = useState<ApiResponseObjInterface>();
+
     return (
         <main
             className='dark:bg-slate-800 bg-gray-50

@@ -1,3 +1,5 @@
+import {memo, useCallback} from "react";
+
 interface SelectProps<T extends string>{
     options: T[];
     value: T;
@@ -5,7 +7,7 @@ interface SelectProps<T extends string>{
     className?: string;
 }
 
-export const Select = <T extends string>(props: SelectProps<T>) => {
+export const Select = memo(<T extends string>(props: SelectProps<T>) => {
     const {
         options,
         value,
@@ -13,9 +15,9 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
         onChange
     } = props;
 
-    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const handleChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
         onChange(event.target.value as T);
-    };
+    }, [onChange]);
 
     return (
         <select
@@ -33,4 +35,13 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
             {options.map((opt, index: number) => <option value={opt} key={index}>{opt}</option>)}
         </select>
     );
-};
+}
+, (prevProps, nextProps) => {
+    return (
+        prevProps.options === nextProps.options &&
+        prevProps.value === nextProps.value &&
+        prevProps.className === nextProps.className &&
+        prevProps.onChange === nextProps.onChange
+    );
+}
+);

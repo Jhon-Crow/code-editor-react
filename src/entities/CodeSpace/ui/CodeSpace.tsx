@@ -1,4 +1,4 @@
-import {useCallback} from 'react';
+import {memo, useCallback} from 'react';
 import CodeMirror, {Extension, ReactCodeMirrorProps} from '@uiw/react-codemirror';
 
 interface CodeSpaceProps extends ReactCodeMirrorProps{
@@ -6,7 +6,7 @@ interface CodeSpaceProps extends ReactCodeMirrorProps{
     setValue: (val: string) => void;
 }
 
-export const CodeSpace = (props: CodeSpaceProps) => {
+export const CodeSpace = memo((props: CodeSpaceProps) => {
     const { language, value, setValue, ...otherProps } = props;
 
     const onChange = useCallback((val: string) => {
@@ -22,4 +22,4 @@ export const CodeSpace = (props: CodeSpaceProps) => {
             {...otherProps}
         />
     );
-}
+})
