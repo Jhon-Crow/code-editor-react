@@ -1,5 +1,4 @@
 interface SelectProps<T extends string>{
-    theme?: 'dark' | 'light',
     options: T[];
     value: T;
     onChange: (value: T)=> void;
@@ -8,7 +7,6 @@ interface SelectProps<T extends string>{
 
 export const Select = <T extends string>(props: SelectProps<T>) => {
     const {
-        theme = 'dark',
         options,
         value,
         className,
@@ -23,7 +21,10 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
         <select
             className={`
             max-h-fit           
-            text-center p-2 bg-${theme === 'dark' ? 'slate-900' : 'white'} rounded-md shadow-lg text-gray-${theme === 'dark' ? 300 : 800}
+            text-center p-2 
+            dark:bg-slate-900 bg-white
+            rounded-md shadow-lg 
+            dark:text-gray-300 text-gray-800
             ${className}
             `}
             value={value}
