@@ -17,7 +17,7 @@ export const Main = () => {
     const [code, setCode] = useState(
         codeEditorInitialState
     );
-    const [langNamesArr, _] = useState<TLanguage[]>(['go', 'python']);
+    const langNamesArr: TLanguage[] = ['go', 'python'];
     const languagesMap: Record<TLanguage, () => Extension> = {
         'go': go,
         'python': python
