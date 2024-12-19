@@ -1,1 +1,3 @@
-export {Select} from './ui/Select.tsx';
+import Select from "@/shared/Select/ui/Select.tsx";
+
+export default Select

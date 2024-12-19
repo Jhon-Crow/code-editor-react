@@ -7,7 +7,7 @@ interface SelectProps<T extends string>{
     className?: string;
 }
 
-export const Select = memo(<T extends string>(props: SelectProps<T>) => {
+const Select = <T extends string>(props: SelectProps<T>) => {
     const {
         options,
         value,
@@ -35,13 +35,15 @@ export const Select = memo(<T extends string>(props: SelectProps<T>) => {
             {options.map((opt, index: number) => <option value={opt} key={index}>{opt}</option>)}
         </select>
     );
-}
-, (prevProps, nextProps) => {
-    return (
-        prevProps.options === nextProps.options &&
-        prevProps.value === nextProps.value &&
-        prevProps.className === nextProps.className &&
-        prevProps.onChange === nextProps.onChange
-    );
-}
-);
+};
+
+export default memo(Select,
+    (prevProps, nextProps) => {
+        return (
+            prevProps.options === nextProps.options &&
+            prevProps.value === nextProps.value &&
+            prevProps.className === nextProps.className &&
+            prevProps.onChange === nextProps.onChange
+        );
+    }
+) as typeof Select

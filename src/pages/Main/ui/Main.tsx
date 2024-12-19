@@ -1,7 +1,7 @@
 import {go} from '@codemirror/lang-go';
-import {useMemo, useState} from "react";
+import {useState} from "react";
 import {python} from "@codemirror/lang-python";
-import {Select} from "@/shared/Select";
+import Select from "@/shared/Select";
 import {CodeSpace} from "@/entities/CodeSpace";
 import {Extension} from "@uiw/react-codemirror";
 import {TaskText} from "@/entities/TaskText";
