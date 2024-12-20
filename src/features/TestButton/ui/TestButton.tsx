@@ -35,10 +35,4 @@ export const TestButton = memo((props: TestButtonProps) => {
             Test
         </button>
     );
-},  (prevProps, nextProps) => {
-    return (
-        prevProps.code === nextProps.code &&
-        prevProps.language === nextProps.language &&
-        prevProps.className === nextProps.className
-    );
-});
+},  () => true);

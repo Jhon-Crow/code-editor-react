@@ -1,12 +1,12 @@
 import { ApiResponseObjInterface } from '../type/ApiResponseObjInterface.ts';
+import {memo} from "react";
 
 interface ApiResponseProps {
     res?: ApiResponseObjInterface;
 }
 
-export const ApiResponseText = (props: ApiResponseProps) => {
+export const ApiResponseText = memo((props: ApiResponseProps) => {
     const { res } = props;
-
     const bgClass = res?.status === 'success' ? 'bg-green-500 bg-opacity-20' : 'bg-red-500 bg-opacity-30';
     const textClass = res?.status === 'success' ? 'text-green-800' : 'text-red-800';
     const shadowClass = res?.status === 'success' ? 'shadow-green-200 ' : 'shadow-red-200';
@@ -17,4 +17,4 @@ export const ApiResponseText = (props: ApiResponseProps) => {
             <p className={textClass}>{res.status === 'success' ? res.output : res.error}</p>
         </div>
     );
-};
+}, (prevProps, nextProps) => prevProps.res?.status === nextProps.res?.status);

@@ -40,7 +40,6 @@ const Select = <T extends string>(props: SelectProps<T>) => {
 export default memo(Select,
     (prevProps, nextProps) => {
         return (
-            prevProps.options === nextProps.options &&
             prevProps.value === nextProps.value &&
             prevProps.className === nextProps.className &&
             prevProps.onChange === nextProps.onChange
